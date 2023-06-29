@@ -1,10 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { githubApi } from '../api'
-
-interface ReposType {
-  id: number
-  name: string
-}
+import { ReposType } from '../@types/interfaces'
+import { GithubRepoCard } from './GithubRepoCard'
 
 async function getRepos() {
   const res = await githubApi.get<ReposType[]>('/users/MatheusMA678/repos')
@@ -17,24 +14,19 @@ export const Main = () => {
     queryFn: getRepos,
   })
 
-  const newRepos = repos?.slice(0, 5)
+  const newRepos = repos?.slice(0, 10)
 
   return (
-    <main className="flex gap-4 px-12">
-      {isLoading ? (
-        <h1>Carregando...</h1>
-      ) : (
-        newRepos?.map((repo) => {
-          return (
-            <div
-              key={repo.id}
-              className="flex flex-col gap-4 rounded-lg border border-zinc-100/50 bg-zinc-800 p-4 shadow backdrop-blur"
-            >
-              <h1>{repo.name}</h1>
-            </div>
-          )
-        })
-      )}
+    <main className="flex overflow-y-auto px-12">
+      <div className="space-y-6 overflow-y-auto p-4 scrollbar-thin scrollbar-track-zinc-900 scrollbar-thumb-zinc-600">
+        {isLoading ? (
+          <h1>Carregando...</h1>
+        ) : (
+          newRepos?.map((repo) => {
+            return <GithubRepoCard key={repo.id} repo={repo} />
+          })
+        )}
+      </div>
     </main>
   )
 }

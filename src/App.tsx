@@ -9,7 +9,7 @@ export default function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="min-h-screen bg-zinc-100 text-zinc-950 dark:bg-zinc-900 dark:text-zinc-100">
+      <div className="h-screen overflow-hidden bg-zinc-100 text-zinc-950 dark:bg-zinc-900 dark:text-zinc-100">
         <Header />
         <Main />
       </div>
