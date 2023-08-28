@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useEffect, useState } from 'react'
+import { ReactNode, createContext, useState } from 'react'
 
 interface AppContextTypes {
   user: string
@@ -17,10 +17,6 @@ export function AppContextProvider({ children }: AppContextProviderProps) {
   const handleUser = (value: string) => {
     setUser(value)
   }
-
-  useEffect(() => {
-    localStorage.setItem('user', user)
-  }, [user])
 
   return (
     <AppContext.Provider

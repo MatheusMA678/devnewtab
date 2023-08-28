@@ -4,4 +4,5 @@ export interface ReposType {
   language: string | null
   html_url: string
   description: string
+  updated_at: string
 }
