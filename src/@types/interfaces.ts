@@ -6,3 +6,5 @@ export interface ReposType {
   description: string
   updated_at: string
 }
+
+export type SearchEngineType = 'google' | 'bing'

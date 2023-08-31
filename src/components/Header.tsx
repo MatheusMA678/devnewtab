@@ -24,7 +24,7 @@ export function Header() {
         </strong>
       </h1>
 
-      <strong>
+      <strong className="text-sm">
         {new Intl.DateTimeFormat('pt-BR', { dateStyle: 'full' }).format(date)}
       </strong>
     </header>
